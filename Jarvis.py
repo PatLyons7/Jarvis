@@ -12,11 +12,20 @@ import soundfile as sf
 import requests
 import openai
 
+fref = open('Desktop/Jarvis/keys.txt','r', newline = '\n')
+key_string = fref.read()
+fref.close()
+keys = key_string.split("_")
+
+OPENAI_Key = keys[0]
+News_Key = keys[1]
+Movie_Key = keys[2]
+Ow_Key = keys[3][:-1]
+
+
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
-OW_Key = "7beb7fd02d5f4aecd06ef1325d7c1f0c"
-openai.api_key = "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"
-Movie_Key = "0f5fe60e4563b4e1f62ab077c99b7111"
-News_Key = "638cbdd3484042eabf7e1450d8a8cb30"
+openai.api_key = OPENAI_Key
+
 
 model = whisper.load_model("small")
 
